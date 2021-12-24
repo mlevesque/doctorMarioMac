@@ -12,6 +12,7 @@ class GameScene: SKScene {
     
     fileprivate var label : SKLabelNode?
     fileprivate var spinnyNode : SKShapeNode?
+    fileprivate var gameboard : Gameboard?
 
     
     class func newGameScene() -> GameScene {
@@ -58,6 +59,13 @@ class GameScene: SKScene {
                                                                    })])))
             #endif
         }
+        
+        self.gameboard = Gameboard(gridWidth: 10, gridHeight: 10, cellWidth: 32, cellHeight: 32)
+        _ = self.gameboard?.setVirus(x: 0, y: 0, color: .Red)
+        _ = self.gameboard?.setVirus(x: 1, y: 2, color: .Red)
+        self.gameboard?.position.x = 0
+        self.gameboard?.position.y = 0
+        self.addChild(self.gameboard!)
     }
     
     #if os(watchOS)

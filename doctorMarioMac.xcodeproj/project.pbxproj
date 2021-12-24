@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		833E46CA277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
+		833E46CB277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
+		833E46CC277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
+		833E46CE277554E400DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46CD277554E400DB3CC7 /* Gameboard.swift */; };
+		833E46CF277554E400DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46CD277554E400DB3CC7 /* Gameboard.swift */; };
+		833E46D0277554E400DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46CD277554E400DB3CC7 /* Gameboard.swift */; };
+		833E46D227755CE500DB3CC7 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46D127755CE500DB3CC7 /* Pill.swift */; };
+		833E46D327755CE500DB3CC7 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46D127755CE500DB3CC7 /* Pill.swift */; };
+		833E46D427755CE500DB3CC7 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46D127755CE500DB3CC7 /* Pill.swift */; };
 		83666199277532C300AB5900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83666198277532C300AB5900 /* AppDelegate.swift */; };
 		8366619B277532C300AB5900 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366619A277532C300AB5900 /* GameViewController.swift */; };
 		8366619E277532C300AB5900 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8366619C277532C300AB5900 /* Main.storyboard */; };
@@ -33,6 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SpriteSheet.atlas; sourceTree = "<group>"; };
+		833E46CD277554E400DB3CC7 /* Gameboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameboard.swift; sourceTree = "<group>"; };
+		833E46D127755CE500DB3CC7 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		8366618D277532C200AB5900 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		8366618E277532C200AB5900 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		8366618F277532C200AB5900 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -93,10 +105,13 @@
 		8366618C277532C200AB5900 /* doctorMarioMac Shared */ = {
 			isa = PBXGroup;
 			children = (
+				833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */,
 				8366618D277532C200AB5900 /* Actions.sks */,
 				8366618E277532C200AB5900 /* GameScene.sks */,
 				8366618F277532C200AB5900 /* GameScene.swift */,
 				83666190277532C300AB5900 /* Assets.xcassets */,
+				833E46CD277554E400DB3CC7 /* Gameboard.swift */,
+				833E46D127755CE500DB3CC7 /* Pill.swift */,
 			);
 			path = "doctorMarioMac Shared";
 			sourceTree = "<group>";
@@ -246,6 +261,7 @@
 			files = (
 				836661C3277532C300AB5900 /* GameScene.sks in Resources */,
 				8366619E277532C300AB5900 /* Main.storyboard in Resources */,
+				833E46CA277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */,
 				836661C0277532C300AB5900 /* Actions.sks in Resources */,
 				836661A1277532C300AB5900 /* LaunchScreen.storyboard in Resources */,
 				836661C9277532C300AB5900 /* Assets.xcassets in Resources */,
@@ -258,6 +274,7 @@
 			files = (
 				836661C4277532C300AB5900 /* GameScene.sks in Resources */,
 				836661AE277532C300AB5900 /* Main.storyboard in Resources */,
+				833E46CB277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */,
 				836661C1277532C300AB5900 /* Actions.sks in Resources */,
 				836661B1277532C300AB5900 /* LaunchScreen.storyboard in Resources */,
 				836661CA277532C300AB5900 /* Assets.xcassets in Resources */,
@@ -270,6 +287,7 @@
 			files = (
 				836661BE277532C300AB5900 /* Main.storyboard in Resources */,
 				836661C5277532C300AB5900 /* GameScene.sks in Resources */,
+				833E46CC277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */,
 				836661CB277532C300AB5900 /* Assets.xcassets in Resources */,
 				836661C2277532C300AB5900 /* Actions.sks in Resources */,
 			);
@@ -282,8 +300,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833E46CE277554E400DB3CC7 /* Gameboard.swift in Sources */,
 				836661C6277532C300AB5900 /* GameScene.swift in Sources */,
 				8366619B277532C300AB5900 /* GameViewController.swift in Sources */,
+				833E46D227755CE500DB3CC7 /* Pill.swift in Sources */,
 				83666199277532C300AB5900 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,8 +312,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833E46CF277554E400DB3CC7 /* Gameboard.swift in Sources */,
 				836661C7277532C300AB5900 /* GameScene.swift in Sources */,
 				836661AB277532C300AB5900 /* GameViewController.swift in Sources */,
+				833E46D327755CE500DB3CC7 /* Pill.swift in Sources */,
 				836661A9277532C300AB5900 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,8 +324,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833E46D0277554E400DB3CC7 /* Gameboard.swift in Sources */,
 				836661C8277532C300AB5900 /* GameScene.swift in Sources */,
 				836661BB277532C300AB5900 /* GameViewController.swift in Sources */,
+				833E46D427755CE500DB3CC7 /* Pill.swift in Sources */,
 				836661B9277532C300AB5900 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
