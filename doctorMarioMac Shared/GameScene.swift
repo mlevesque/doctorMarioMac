@@ -60,11 +60,33 @@ class GameScene: SKScene {
             #endif
         }
         
-        self.gameboard = Gameboard(gridWidth: 10, gridHeight: 10, cellWidth: 32, cellHeight: 32)
-        _ = self.gameboard?.setVirus(x: 0, y: 0, color: .Red)
-        _ = self.gameboard?.setVirus(x: 1, y: 2, color: .Red)
-        self.gameboard?.position.x = 0
-        self.gameboard?.position.y = 0
+        self.gameboard = Gameboard(gridWidth: 20, gridHeight: 20, cellWidth: 32, cellHeight: 32)
+        for x in 0..<20 {
+            for y in 0..<20 {
+                let num = Int.random(in: 0..<10)
+                let color = {() -> CellColor in
+                    switch num {
+                    case 0:
+                        return .Blue
+                    case 1:
+                        return .Red
+                    case 2:
+                        return .Yellow
+                    default:
+                        return .None
+                    }
+                }
+                let c = color()
+                if c != .None {
+                    _ = self.gameboard?.setVirus(x: x, y: y, color: c)
+                }
+            }
+        }
+//        _ = self.gameboard?.setVirus(x: 0, y: 0, color: .Red)
+//        _ = self.gameboard?.setVirus(x: 1, y: 2, color: .Yellow)
+//        _ = self.gameboard?.setVirus(x: 3, y: 2, color: .Blue)
+        self.gameboard?.position.x = -600
+        self.gameboard?.position.y = 350
         self.addChild(self.gameboard!)
     }
     
