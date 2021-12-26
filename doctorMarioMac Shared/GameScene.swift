@@ -12,7 +12,8 @@ class GameScene: SKScene {
     
     fileprivate var label : SKLabelNode?
     fileprivate var spinnyNode : SKShapeNode?
-    fileprivate var gameboard : Gameboard?
+    fileprivate var gameboard : IGameboard?
+    fileprivate var lastTimeInterval: TimeInterval = 0
 
     
     class func newGameScene() -> GameScene {
@@ -29,6 +30,8 @@ class GameScene: SKScene {
     }
     
     func setUpScene() {
+        self.view?.ignoresSiblingOrder = true
+        
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
         if let label = self.label {
@@ -60,11 +63,13 @@ class GameScene: SKScene {
             #endif
         }
         
-        self.gameboard = Gameboard(gridWidth: 20, gridHeight: 20, cellWidth: 32, cellHeight: 32)
-        for x in 0..<20 {
-            for y in 0..<20 {
-                let num = Int.random(in: 0..<10)
-                let color = {() -> CellColor in
+        let width = 20
+        let height = 20
+        self.gameboard = createGameboard(gridWidth: width, gridHeight: height, cellWidth: 32, cellHeight: 32)
+        for x in 0..<width {
+            for y in 0..<height {
+                let num = Int.random(in: 0..<3)
+                let color = {() -> Color in
                     switch num {
                     case 0:
                         return .Blue
@@ -85,9 +90,14 @@ class GameScene: SKScene {
 //        _ = self.gameboard?.setVirus(x: 0, y: 0, color: .Red)
 //        _ = self.gameboard?.setVirus(x: 1, y: 2, color: .Yellow)
 //        _ = self.gameboard?.setVirus(x: 3, y: 2, color: .Blue)
-        self.gameboard?.position.x = -600
-        self.gameboard?.position.y = 350
+        //self.gameboard?.position.x = -600
+        //self.gameboard?.position.y = 350
         self.addChild(self.gameboard!)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        self.gameboard?.Update(frameTime: CGFloat(currentTime - lastTimeInterval))
+        lastTimeInterval = currentTime
     }
     
     #if os(watchOS)
@@ -106,10 +116,6 @@ class GameScene: SKScene {
             spinny.strokeColor = color
             self.addChild(spinny)
         }
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
     }
 }
 
@@ -157,7 +163,8 @@ extension GameScene {
         if let label = self.label {
             label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
         }
-        self.makeSpinny(at: event.location(in: self), color: SKColor.green)
+        //self.makeSpinny(at: event.location(in: self), color: SKColor.green)
+        _ = self.gameboard?.setVirus(x: 0, y: 0, color: .Red)
     }
     
     override func mouseDragged(with event: NSEvent) {

@@ -7,16 +7,7 @@
 
 import SpriteKit
 
-public typealias IntPoint = (x: Int, y: Int)
-
-public enum CellColor {
-    case None
-    case Red
-    case Yellow
-    case Blue
-}
-
-public class Pill {
+/*public class Pill {
     private var m_cellPosition: IntPoint
     private var m_vertical: Bool
     private var m_colors: (CellColor, CellColor)
@@ -72,4 +63,4 @@ public class Pill {
         m_colors.0 = m_colors.1
         m_colors.1 = c
     }
-}
+}*/

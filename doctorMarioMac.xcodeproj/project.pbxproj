@@ -10,12 +10,27 @@
 		833E46CA277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
 		833E46CB277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
 		833E46CC277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
-		833E46CE277554E400DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46CD277554E400DB3CC7 /* Gameboard.swift */; };
-		833E46CF277554E400DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46CD277554E400DB3CC7 /* Gameboard.swift */; };
-		833E46D0277554E400DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46CD277554E400DB3CC7 /* Gameboard.swift */; };
 		833E46D227755CE500DB3CC7 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46D127755CE500DB3CC7 /* Pill.swift */; };
 		833E46D327755CE500DB3CC7 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46D127755CE500DB3CC7 /* Pill.swift */; };
 		833E46D427755CE500DB3CC7 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46D127755CE500DB3CC7 /* Pill.swift */; };
+		833E46DB2777DE6800DB3CC7 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 833E46DA2777DE6800DB3CC7 /* Atomics */; };
+		833E46DE2777DF0A00DB3CC7 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 833E46DD2777DF0A00DB3CC7 /* Atomics */; };
+		833E46E02777DF0F00DB3CC7 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 833E46DF2777DF0F00DB3CC7 /* Atomics */; };
+		833E46E3277837DB00DB3CC7 /* VisitTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46E2277837DB00DB3CC7 /* VisitTable.swift */; };
+		833E46E4277837DB00DB3CC7 /* VisitTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46E2277837DB00DB3CC7 /* VisitTable.swift */; };
+		833E46E5277837DB00DB3CC7 /* VisitTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46E2277837DB00DB3CC7 /* VisitTable.swift */; };
+		833E46E72778382900DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46E62778382900DB3CC7 /* Gameboard.swift */; };
+		833E46E82778382900DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46E62778382900DB3CC7 /* Gameboard.swift */; };
+		833E46E92778382900DB3CC7 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46E62778382900DB3CC7 /* Gameboard.swift */; };
+		833E46EB277838DE00DB3CC7 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46EA277838DE00DB3CC7 /* Misc.swift */; };
+		833E46EC277838DE00DB3CC7 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46EA277838DE00DB3CC7 /* Misc.swift */; };
+		833E46ED277838DE00DB3CC7 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46EA277838DE00DB3CC7 /* Misc.swift */; };
+		833E46EF277842E600DB3CC7 /* TextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46EE277842E600DB3CC7 /* TextureCache.swift */; };
+		833E46F0277842E600DB3CC7 /* TextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46EE277842E600DB3CC7 /* TextureCache.swift */; };
+		833E46F1277842E700DB3CC7 /* TextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46EE277842E600DB3CC7 /* TextureCache.swift */; };
+		833E46F32779050F00DB3CC7 /* VirusPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F22779050F00DB3CC7 /* VirusPropagator.swift */; };
+		833E46F42779050F00DB3CC7 /* VirusPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F22779050F00DB3CC7 /* VirusPropagator.swift */; };
+		833E46F52779050F00DB3CC7 /* VirusPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F22779050F00DB3CC7 /* VirusPropagator.swift */; };
 		83666199277532C300AB5900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83666198277532C300AB5900 /* AppDelegate.swift */; };
 		8366619B277532C300AB5900 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366619A277532C300AB5900 /* GameViewController.swift */; };
 		8366619E277532C300AB5900 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8366619C277532C300AB5900 /* Main.storyboard */; };
@@ -43,8 +58,12 @@
 
 /* Begin PBXFileReference section */
 		833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SpriteSheet.atlas; sourceTree = "<group>"; };
-		833E46CD277554E400DB3CC7 /* Gameboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameboard.swift; sourceTree = "<group>"; };
 		833E46D127755CE500DB3CC7 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
+		833E46E2277837DB00DB3CC7 /* VisitTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitTable.swift; sourceTree = "<group>"; };
+		833E46E62778382900DB3CC7 /* Gameboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameboard.swift; sourceTree = "<group>"; };
+		833E46EA277838DE00DB3CC7 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		833E46EE277842E600DB3CC7 /* TextureCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureCache.swift; sourceTree = "<group>"; };
+		833E46F22779050F00DB3CC7 /* VirusPropagator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusPropagator.swift; sourceTree = "<group>"; };
 		8366618D277532C200AB5900 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		8366618E277532C200AB5900 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		8366618F277532C200AB5900 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -71,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833E46DB2777DE6800DB3CC7 /* Atomics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833E46DE2777DF0A00DB3CC7 /* Atomics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,12 +106,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833E46E02777DF0F00DB3CC7 /* Atomics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		833E46DC2777DF0A00DB3CC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		833E46E12778379B00DB3CC7 /* Gameboard */ = {
+			isa = PBXGroup;
+			children = (
+				833E46E2277837DB00DB3CC7 /* VisitTable.swift */,
+				833E46E62778382900DB3CC7 /* Gameboard.swift */,
+				833E46F22779050F00DB3CC7 /* VirusPropagator.swift */,
+			);
+			path = Gameboard;
+			sourceTree = "<group>";
+		};
 		83666187277532C200AB5900 = {
 			isa = PBXGroup;
 			children = (
@@ -99,19 +138,22 @@
 				836661A7277532C300AB5900 /* doctorMarioMac tvOS */,
 				836661B7277532C300AB5900 /* doctorMarioMac macOS */,
 				83666196277532C300AB5900 /* Products */,
+				833E46DC2777DF0A00DB3CC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		8366618C277532C200AB5900 /* doctorMarioMac Shared */ = {
 			isa = PBXGroup;
 			children = (
+				833E46E12778379B00DB3CC7 /* Gameboard */,
 				833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */,
 				8366618D277532C200AB5900 /* Actions.sks */,
 				8366618E277532C200AB5900 /* GameScene.sks */,
 				8366618F277532C200AB5900 /* GameScene.swift */,
 				83666190277532C300AB5900 /* Assets.xcassets */,
-				833E46CD277554E400DB3CC7 /* Gameboard.swift */,
 				833E46D127755CE500DB3CC7 /* Pill.swift */,
+				833E46EA277838DE00DB3CC7 /* Misc.swift */,
+				833E46EE277842E600DB3CC7 /* TextureCache.swift */,
 			);
 			path = "doctorMarioMac Shared";
 			sourceTree = "<group>";
@@ -175,6 +217,9 @@
 			dependencies = (
 			);
 			name = "doctorMarioMac iOS";
+			packageProductDependencies = (
+				833E46DA2777DE6800DB3CC7 /* Atomics */,
+			);
 			productName = "doctorMarioMac iOS";
 			productReference = 83666195277532C300AB5900 /* doctorMarioMac.app */;
 			productType = "com.apple.product-type.application";
@@ -192,6 +237,9 @@
 			dependencies = (
 			);
 			name = "doctorMarioMac tvOS";
+			packageProductDependencies = (
+				833E46DD2777DF0A00DB3CC7 /* Atomics */,
+			);
 			productName = "doctorMarioMac tvOS";
 			productReference = 836661A6277532C300AB5900 /* doctorMarioMac.app */;
 			productType = "com.apple.product-type.application";
@@ -209,6 +257,9 @@
 			dependencies = (
 			);
 			name = "doctorMarioMac macOS";
+			packageProductDependencies = (
+				833E46DF2777DF0F00DB3CC7 /* Atomics */,
+			);
 			productName = "doctorMarioMac macOS";
 			productReference = 836661B6277532C300AB5900 /* doctorMarioMac.app */;
 			productType = "com.apple.product-type.application";
@@ -243,6 +294,9 @@
 				Base,
 			);
 			mainGroup = 83666187277532C200AB5900;
+			packageReferences = (
+				833E46D92777DE6800DB3CC7 /* XCRemoteSwiftPackageReference "swift-atomics" */,
+			);
 			productRefGroup = 83666196277532C300AB5900 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -300,10 +354,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833E46CE277554E400DB3CC7 /* Gameboard.swift in Sources */,
+				833E46E72778382900DB3CC7 /* Gameboard.swift in Sources */,
+				833E46EB277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C6277532C300AB5900 /* GameScene.swift in Sources */,
 				8366619B277532C300AB5900 /* GameViewController.swift in Sources */,
 				833E46D227755CE500DB3CC7 /* Pill.swift in Sources */,
+				833E46F32779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
+				833E46E3277837DB00DB3CC7 /* VisitTable.swift in Sources */,
+				833E46EF277842E600DB3CC7 /* TextureCache.swift in Sources */,
 				83666199277532C300AB5900 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,10 +370,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833E46CF277554E400DB3CC7 /* Gameboard.swift in Sources */,
+				833E46E82778382900DB3CC7 /* Gameboard.swift in Sources */,
+				833E46EC277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C7277532C300AB5900 /* GameScene.swift in Sources */,
 				836661AB277532C300AB5900 /* GameViewController.swift in Sources */,
 				833E46D327755CE500DB3CC7 /* Pill.swift in Sources */,
+				833E46F42779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
+				833E46E4277837DB00DB3CC7 /* VisitTable.swift in Sources */,
+				833E46F0277842E600DB3CC7 /* TextureCache.swift in Sources */,
 				836661A9277532C300AB5900 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,10 +386,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833E46D0277554E400DB3CC7 /* Gameboard.swift in Sources */,
+				833E46E92778382900DB3CC7 /* Gameboard.swift in Sources */,
+				833E46ED277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C8277532C300AB5900 /* GameScene.swift in Sources */,
 				836661BB277532C300AB5900 /* GameViewController.swift in Sources */,
 				833E46D427755CE500DB3CC7 /* Pill.swift in Sources */,
+				833E46F52779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
+				833E46E5277837DB00DB3CC7 /* VisitTable.swift in Sources */,
+				833E46F1277842E700DB3CC7 /* TextureCache.swift in Sources */,
 				836661B9277532C300AB5900 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,6 +769,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		833E46D92777DE6800DB3CC7 /* XCRemoteSwiftPackageReference "swift-atomics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-atomics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		833E46DA2777DE6800DB3CC7 /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 833E46D92777DE6800DB3CC7 /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
+		};
+		833E46DD2777DF0A00DB3CC7 /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 833E46D92777DE6800DB3CC7 /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
+		};
+		833E46DF2777DF0F00DB3CC7 /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 833E46D92777DE6800DB3CC7 /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83666188277532C200AB5900 /* Project object */;
 }
