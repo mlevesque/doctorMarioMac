@@ -107,8 +107,9 @@ fileprivate class Gameboard : SKNode, IGameboard {
         
         // attach all nodes to gameboard node
         actOnAllCells({(x: Int, y: Int, _ cell: inout Cell) -> Void in
-            cell.node = SKSpriteNode(texture: nil, size: CGSize(width: m_cellWidth, height: m_cellHeight))
+            cell.node = SKSpriteNode(texture: nil, color: .black, size: CGSize(width: m_cellWidth, height: m_cellHeight))
             cell.node!.isHidden = true
+            cell.node!.anchorPoint = CGPoint(x: 0, y: 1)
             cell.node!.position = CGPoint(x: CGFloat(x) * m_cellWidth, y: -CGFloat(y) * m_cellHeight)
             self.addChild(cell.node!)
         })
@@ -232,7 +233,7 @@ fileprivate class Gameboard : SKNode, IGameboard {
                 cell.markedForDestruction = true
                 cell.link = .None
                 cell.node!.isHidden = false
-                cell.node!.texture = getTexture("tile_destruct")
+                cell.node!.texture = getTexture("tile_pill_\(cell.color.description)_d")
             }
         })
     }

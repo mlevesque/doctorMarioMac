@@ -31,6 +31,7 @@ class GameScene: SKScene {
     
     func setUpScene() {
         self.view?.ignoresSiblingOrder = true
+        self.scene?.backgroundColor = .black
         
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
@@ -64,13 +65,17 @@ class GameScene: SKScene {
         }
         
         let width = 10
-        let height = 15
+        let height = 20
         let cellSize: CGFloat = 32
+        
         self.gameboard = createGameboard(gridWidth: width, gridHeight: height, cellWidth: cellSize, cellHeight: cellSize)
         self.gameboard?.position.x = -CGFloat(width) * cellSize / 2
         self.gameboard?.position.y = CGFloat(height) * cellSize / 2
-        self.addChild(self.gameboard!)
+        //self.addChild(self.gameboard!)
         generateViruses(redCount: 30, yellowCount: 30, blueCount: 30, virusCeiling: 5)
+        
+        let bottle = buildBottle(innerWidth: cellSize * CGFloat(width), innerHeight: cellSize * CGFloat(height), tileSize: cellSize, gameboard: self.gameboard!)
+        self.addChild(bottle)
     }
     
     func generateViruses(redCount: Int, yellowCount: Int, blueCount: Int, virusCeiling: Int) {

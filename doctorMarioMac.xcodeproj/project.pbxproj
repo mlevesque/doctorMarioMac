@@ -31,6 +31,9 @@
 		833E46F32779050F00DB3CC7 /* VirusPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F22779050F00DB3CC7 /* VirusPropagator.swift */; };
 		833E46F42779050F00DB3CC7 /* VirusPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F22779050F00DB3CC7 /* VirusPropagator.swift */; };
 		833E46F52779050F00DB3CC7 /* VirusPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F22779050F00DB3CC7 /* VirusPropagator.swift */; };
+		833E46F82779677F00DB3CC7 /* Bottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F72779677F00DB3CC7 /* Bottle.swift */; };
+		833E46F92779677F00DB3CC7 /* Bottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F72779677F00DB3CC7 /* Bottle.swift */; };
+		833E46FA2779677F00DB3CC7 /* Bottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E46F72779677F00DB3CC7 /* Bottle.swift */; };
 		83666199277532C300AB5900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83666198277532C300AB5900 /* AppDelegate.swift */; };
 		8366619B277532C300AB5900 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366619A277532C300AB5900 /* GameViewController.swift */; };
 		8366619E277532C300AB5900 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8366619C277532C300AB5900 /* Main.storyboard */; };
@@ -64,6 +67,7 @@
 		833E46EA277838DE00DB3CC7 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		833E46EE277842E600DB3CC7 /* TextureCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureCache.swift; sourceTree = "<group>"; };
 		833E46F22779050F00DB3CC7 /* VirusPropagator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusPropagator.swift; sourceTree = "<group>"; };
+		833E46F72779677F00DB3CC7 /* Bottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bottle.swift; sourceTree = "<group>"; };
 		8366618D277532C200AB5900 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		8366618E277532C200AB5900 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		8366618F277532C200AB5900 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -130,6 +134,14 @@
 			path = Gameboard;
 			sourceTree = "<group>";
 		};
+		833E46F62779673D00DB3CC7 /* VisualContainers */ = {
+			isa = PBXGroup;
+			children = (
+				833E46F72779677F00DB3CC7 /* Bottle.swift */,
+			);
+			path = VisualContainers;
+			sourceTree = "<group>";
+		};
 		83666187277532C200AB5900 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +157,7 @@
 		8366618C277532C200AB5900 /* doctorMarioMac Shared */ = {
 			isa = PBXGroup;
 			children = (
+				833E46F62779673D00DB3CC7 /* VisualContainers */,
 				833E46E12778379B00DB3CC7 /* Gameboard */,
 				833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */,
 				8366618D277532C200AB5900 /* Actions.sks */,
@@ -357,6 +370,7 @@
 				833E46E72778382900DB3CC7 /* Gameboard.swift in Sources */,
 				833E46EB277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C6277532C300AB5900 /* GameScene.swift in Sources */,
+				833E46F82779677F00DB3CC7 /* Bottle.swift in Sources */,
 				8366619B277532C300AB5900 /* GameViewController.swift in Sources */,
 				833E46D227755CE500DB3CC7 /* Pill.swift in Sources */,
 				833E46F32779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
@@ -373,6 +387,7 @@
 				833E46E82778382900DB3CC7 /* Gameboard.swift in Sources */,
 				833E46EC277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C7277532C300AB5900 /* GameScene.swift in Sources */,
+				833E46F92779677F00DB3CC7 /* Bottle.swift in Sources */,
 				836661AB277532C300AB5900 /* GameViewController.swift in Sources */,
 				833E46D327755CE500DB3CC7 /* Pill.swift in Sources */,
 				833E46F42779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
@@ -389,6 +404,7 @@
 				833E46E92778382900DB3CC7 /* Gameboard.swift in Sources */,
 				833E46ED277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C8277532C300AB5900 /* GameScene.swift in Sources */,
+				833E46FA2779677F00DB3CC7 /* Bottle.swift in Sources */,
 				836661BB277532C300AB5900 /* GameViewController.swift in Sources */,
 				833E46D427755CE500DB3CC7 /* Pill.swift in Sources */,
 				833E46F52779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
