@@ -63,36 +63,30 @@ class GameScene: SKScene {
             #endif
         }
         
-        let width = 20
-        let height = 20
-        self.gameboard = createGameboard(gridWidth: width, gridHeight: height, cellWidth: 32, cellHeight: 32)
-        for x in 0..<width {
-            for y in 0..<height {
-                let num = Int.random(in: 0..<3)
-                let color = {() -> Color in
-                    switch num {
-                    case 0:
-                        return .Blue
-                    case 1:
-                        return .Red
-                    case 2:
-                        return .Yellow
-                    default:
-                        return .None
-                    }
-                }
-                let c = color()
-                if c != .None {
-                    _ = self.gameboard?.setVirus(x: x, y: y, color: c)
-                }
-            }
-        }
-//        _ = self.gameboard?.setVirus(x: 0, y: 0, color: .Red)
-//        _ = self.gameboard?.setVirus(x: 1, y: 2, color: .Yellow)
-//        _ = self.gameboard?.setVirus(x: 3, y: 2, color: .Blue)
-        //self.gameboard?.position.x = -600
-        //self.gameboard?.position.y = 350
+        let width = 10
+        let height = 15
+        let cellSize: CGFloat = 32
+        self.gameboard = createGameboard(gridWidth: width, gridHeight: height, cellWidth: cellSize, cellHeight: cellSize)
+        self.gameboard?.position.x = -CGFloat(width) * cellSize / 2
+        self.gameboard?.position.y = CGFloat(height) * cellSize / 2
         self.addChild(self.gameboard!)
+        generateViruses(redCount: 30, yellowCount: 30, blueCount: 30, virusCeiling: 5)
+    }
+    
+    func generateViruses(redCount: Int, yellowCount: Int, blueCount: Int, virusCeiling: Int) {
+        let width = self.gameboard!.gridWidth
+        let height = self.gameboard!.gridHeight
+        let ceiling = virusCeiling >= height ? height - 1 : virusCeiling
+        let virusPropResults = generateVirusPositions(
+            gridWidth: width,
+            gridHeight: height - ceiling,
+            redCount: redCount,
+            yellowCount: yellowCount,
+            blueCount: blueCount)
+        self.gameboard?.clear()
+        for pos in virusPropResults.results {
+            self.gameboard?.setVirus(x: pos.position.x, y: pos.position.y + ceiling, color: pos.color)
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -164,15 +158,16 @@ extension GameScene {
             label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
         }
         //self.makeSpinny(at: event.location(in: self), color: SKColor.green)
-        _ = self.gameboard?.setVirus(x: 0, y: 0, color: .Red)
+        //_ = self.gameboard?.setVirus(x: 0, y: 0, color: .Red)
     }
     
     override func mouseDragged(with event: NSEvent) {
-        self.makeSpinny(at: event.location(in: self), color: SKColor.blue)
+        //self.makeSpinny(at: event.location(in: self), color: SKColor.blue)
     }
     
     override func mouseUp(with event: NSEvent) {
-        self.makeSpinny(at: event.location(in: self), color: SKColor.red)
+        //self.makeSpinny(at: event.location(in: self), color: SKColor.red)
+        generateViruses(redCount: 30, yellowCount: 30, blueCount: 30, virusCeiling: 5)
     }
 
 }

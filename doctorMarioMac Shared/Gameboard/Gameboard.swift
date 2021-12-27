@@ -25,9 +25,12 @@ public protocol ICell {
 public protocol IGameboard : SKNode {
     var gridWidth: Int {get}
     var gridHeight: Int {get}
+    var cellWidth: CGFloat {get}
+    var cellHeight: CGFloat {get}
     
     func isInBounds(x: Int, y: Int) -> Bool
     
+    func clear() -> Void
     func setEmpty(x: Int, y: Int) -> Void
     func setVirus(x: Int, y: Int, color: Color) -> Void
     func setSinglePill(x: Int, y: Int, color: Color) -> Void
@@ -150,12 +153,25 @@ fileprivate class Gameboard : SKNode, IGameboard {
     // MARK: Getters
     var gridWidth: Int {get {return m_gridWidth}}
     var gridHeight: Int {get {return m_gridHeight}}
+    var cellWidth: CGFloat {get {return m_cellWidth}}
+    var cellHeight: CGFloat {get {return m_cellHeight}}
     
     func isInBounds(x: Int, y: Int) -> Bool {
         return x >= 0 && y >= 0 && x < m_gridWidth && y < m_gridHeight
     }
     
     // MARK: Setting Cells
+    func clear() -> Void {
+        actOnAllCells({(x: Int, y: Int, _ cell: inout Cell) -> Void in
+            cell.color = .None
+            cell.isVirus = false
+            cell.markedForDestruction = false
+            cell.link = .None
+            cell.node!.isHidden = true
+            cell.node!.texture = getTexture("")
+        })
+    }
+    
     func setEmpty(x: Int, y: Int) -> Void {
         actOnCell(x: x, y: y, {(x: Int, y: Int, _ cell: inout Cell) -> Void in
             cell.color = .None

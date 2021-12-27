@@ -36,4 +36,18 @@ public class VisitTable {
         }
         m_grid[y][x] = true
     }
+    
+    var description: String {
+        get {
+            var arr: [String] = []
+            for y in 0..<m_height {
+                var row: [String] = []
+                for x in 0..<m_width {
+                    row.append(m_grid[y][x] ? "X" : "·")
+                }
+                arr.append(row.joined(separator: " "))
+            }
+            return arr.joined(separator: "\n")
+        }
+    }
 }
