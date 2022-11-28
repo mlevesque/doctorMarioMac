@@ -2,144 +2,163 @@
 //  VirusPropagator.swift
 //  doctorMarioMac
 //
+//  Logic for populating a gameboard with viruses.
+//
 //  Created by Michael Levesque on 12/26/21.
 //
 
-public typealias VirusPosition = (color: Color, position: IntPoint)
-public typealias VirusPropagationResult = (missingRed: Int, missingYellow: Int, missingBlue: Int, results: [VirusPosition])
+// Algorithm for Virus Propagation
+// (Adapted from https://tetris.wiki/Dr._Mario)
 
-fileprivate func isValidPosition(pos: IntPoint, visit: VisitTable) -> Bool {
-    guard !visit.isVisited(x: pos.x, y: pos.y) else {
-        return false
-    }
+import GameplayKit
+
+// MARK: Interfaces
+
+/// Virus propagation object.
+public protocol IVirusPropagtor {
     
-    // test horizontal
-    var count = 1
-    var x = pos.x + 1
-    while count < 3 && x < visit.width && visit.isVisited(x: x, y: pos.y) {
-        count += 1
-        x += 1
-    }
-    x = pos.x - 1
-    while count < 3 && x >= 0 && visit.isVisited(x: x, y: pos.y) {
-        count += 1
-        x -= 1
-    }
-    if count >= 3 {
-        return false
-    }
-    
-    // test vertical
-    count = 1
-    var y = pos.y + 1
-    while count < 3 && y < visit.height && visit.isVisited(x: pos.x, y: y) {
-        count += 1
-        y += 1
-    }
-    y = pos.y - 1
-    while count < 3 && y >= 0 && visit.isVisited(x: pos.x, y: y) {
-        count += 1
-        y -= 1
-    }
-    if count >= 3 {
-        return false
-    }
-    
-    return true
+    /// Attempts to generate one virus into the given gameboard.
+    ///
+    /// The given remaining number of viruses plays into the algorithm for choosing what color
+    /// the virus will be.
+    ///
+    /// Returns the new remaining number of viruses to populate. If the return value is the same
+    /// as the given viruses remaining, then the algorithm failed to place a new virus.
+    /// - Parameters:
+    ///   - virusCount: number of viruses to populate
+    ///   - gameboard: gameboard to populate
+    /// - Returns: new number of viruses remaining
+    func generate(virusesRemaining virusCount: Int, gameboard: IGameboard) -> Int
 }
 
-fileprivate var num = 0
 
-fileprivate func pickPosition(width: Int, height: Int, visit: VisitTable) -> IntPoint? {
-    let pos = (Int.random(in: 0..<width), Int.random(in: 0..<height))
-    return pickPositionRecursion(pos: pos, visit: visit, offset: 0)
+// MARK: Factory Method
+
+/// Factory method for creating a virus propagator.
+/// - Parameters:
+///   - gameboardWidth: width of the gameboard; used to set up RNG
+///   - gameboardHeight: height of the gameboard; used to set up RNG
+///   - ceilingLimit: how many cells down from the top of the gameboard is the max height
+///   for all viruses. No viruses can be generated above this ceiling.
+/// - Returns: virus propagator object
+public func buildVirusPropagator(gameboardWidth: Int, gameboardHeight: Int, ceilingLimit: Int) -> IVirusPropagtor {
+    return VirusPropagtor(gameboardWidth: gameboardWidth, gameboardHeight: gameboardHeight, ceilingLimit: ceilingLimit)
 }
 
-fileprivate func pickPositionRecursion(pos: IntPoint, visit: VisitTable, offset: Int) -> IntPoint? {
-    var potentialPositions: [IntPoint] = []
-    
-    if offset == 0 {
-        potentialPositions.append(pos)
-    }
-    else {
-        let start: IntPoint = (pos.x - offset, pos.y - offset)
-        let end: IntPoint = (pos.x + offset, pos.y + offset)
-        for x in start.x...end.x {
-            if !visit.isVisited(x: x, y: start.y) {
-                potentialPositions.append((x, start.y))
-            }
-            if !visit.isVisited(x: x, y: end.y) {
-                potentialPositions.append((x, end.y))
-            }
-        }
-        for y in (start.y + 1)..<end.y {
-            if !visit.isVisited(x: start.x, y: y) {
-                potentialPositions.append((start.x, y))
-            }
-            if !visit.isVisited(x: end.x, y: y) {
-                potentialPositions.append((end.x, y))
-            }
-        }
-    }
-    
-    guard !potentialPositions.isEmpty else {
-        return nil
-    }
-    
-    while !potentialPositions.isEmpty {
-        let index = Int.random(in: 0..<potentialPositions.count)
-        let newPos = potentialPositions.remove(at: index)
-        if isValidPosition(pos: newPos, visit: visit) {
-            return newPos
-        }
-    }
-    return pickPositionRecursion(pos: pos, visit: visit, offset: offset + 1)
-}
 
-public func generateVirusPositions(gridWidth: Int, gridHeight: Int, redCount: Int, yellowCount: Int, blueCount: Int) -> VirusPropagationResult {
-    // build data structures
-    var results: [VirusPosition] = []
-    var virusCounts: [(Color, Int)] = []
-    var visits: Dictionary<Color, VisitTable> = Dictionary()
-    if redCount > 0 {
-        virusCounts.append((.Red, redCount))
-        visits[.Red] = VisitTable(width: gridWidth, height: gridHeight)
-    }
-    if yellowCount > 0 {
-        virusCounts.append((.Yellow, yellowCount))
-        visits[.Yellow] = VisitTable(width: gridWidth, height: gridHeight)
-    }
-    if blueCount > 0 {
-        virusCounts.append((.Blue, blueCount))
-        visits[.Blue] = VisitTable(width: gridWidth, height: gridHeight)
-    }
+// MARK: Implementation
+
+fileprivate class VirusPropagtor : IVirusPropagtor {
     
-    var failureCounts: [Color:Int] = [.Red: 0, .Yellow: 0, .Blue: 0]
-    while !virusCounts.isEmpty {
-        // pick a color
-        let index = Int.random(in: 0..<virusCounts.count)
-        let color = virusCounts[index].0
+    private let m_virusRNGTable: [Color]
+    private let m_rngWidth, m_rngHeight, m_rngColor: GKRandomDistribution
+    
+    init(gameboardWidth: Int, gameboardHeight: Int, ceilingLimit: Int) {
+        // generate virus RNG color table
+        m_virusRNGTable = [.Yellow, .Red, .Blue, .Blue, .Red, .Yellow, .Red, .Blue, .Blue, .Red, .Yellow, .Yellow, .Red, .Blue, .Red]
         
-        // pick a position
-        if let v = visits[color], let pos = pickPosition(width: gridWidth, height: gridHeight, visit: v) {
-            v.setVisited(x: pos.x, y: pos.y)
-            results.append((color: color, position: pos))
-        }
-        else {
-            failureCounts[color]! += 1
-        }
-        
-        // decrement count
-        virusCounts[index].1 -= 1
-        if virusCounts[index].1 <= 0 {
-            virusCounts.remove(at: index)
+        // init random number generators
+        m_rngWidth = GKRandomDistribution(lowestValue: 0, highestValue: gameboardWidth - 1)
+        m_rngHeight = GKRandomDistribution(lowestValue: ceilingLimit, highestValue: gameboardHeight - 1)
+        m_rngColor = GKRandomDistribution(lowestValue: 0, highestValue: m_virusRNGTable.count - 1)
+    }
+    
+    private func pickColor(virusesRemaining: Int) -> Color {
+        let value = virusesRemaining % 4
+        switch value {
+        case 0:
+            return .Yellow
+        case 1:
+            return .Red
+        case 2:
+            return .Blue
+        default:
+            return m_virusRNGTable[m_rngColor.nextInt()]
         }
     }
     
-    return VirusPropagationResult(
-        missingRed: failureCounts[.Red]!,
-        missingYellow: failureCounts[.Yellow]!,
-        missingBlue: failureCounts[.Blue]!,
-        results: results
-    )
+    private func shiftColor(color: Color, secondNeighborColors: [Color : Int]) -> Color {
+        var c = color
+        repeat {
+            switch c {
+            case .Red:
+                c = .Yellow
+            case .Yellow:
+                c = .Blue
+            default:
+                c = .Red
+            }
+        } while secondNeighborColors[c, default: 0] > 0
+        return c
+    }
+    
+    private func findOpenSlot(gameboard: IGameboard, x: inout Int, y: inout Int) -> Bool {
+        while !gameboard.isEmpty(x: x, y: y) && y < gameboard.gridHeight {
+            x += 1
+            if x >= gameboard.gridWidth {
+                y += 1
+                x = 0
+            }
+        }
+        return y < gameboard.gridHeight
+    }
+    
+    private func getColorFromGameboard(gameboard: IGameboard, x: Int, y: Int) -> Color {
+        guard gameboard.isInBounds(x: x, y: y) else {
+            return .None
+        }
+        return gameboard.getCellInfo(x: x, y: y).color
+    }
+    
+    private func get2ndNeighborColors(gameboard: IGameboard, x: Int, y: Int) -> [Color : Int] {
+        var result: [Color : Int] = [:]
+        result[getColorFromGameboard(gameboard: gameboard, x: x - 2, y: y), default: 0] += 1
+        result[getColorFromGameboard(gameboard: gameboard, x: x + 2, y: y), default: 0] += 1
+        result[getColorFromGameboard(gameboard: gameboard, x: x, y: y - 2), default: 0] += 1
+        result[getColorFromGameboard(gameboard: gameboard, x: x, y: y + 2), default: 0] += 1
+        return result
+    }
+    
+    /// Algorithm for generating a virus. This is based on the NES Dr. Mario virus generation algorithm described at:
+    /// https://tetris.wiki/Dr._Mario#Virus_Generation
+    /// - Parameters:
+    ///   - virusCount: number of remaining viruses. Used in color picking.
+    ///   - gameboard: gameboard to populate
+    /// - Returns: new number of remaining viruses
+    public func generate(virusesRemaining virusCount: Int, gameboard: IGameboard) -> Int {
+        // select random position and color
+        var y = m_rngHeight.nextInt()
+        var x = m_rngWidth.nextInt()
+        var color = pickColor(virusesRemaining: virusCount)
+        
+        // adjust x, y, and color until we find an available slot
+        var slotFound = false
+        repeat {
+            guard findOpenSlot(gameboard: gameboard, x: &x, y: &y) else {
+                // if we didn't find an available slot, then return the same remaining count
+                return virusCount
+            }
+        
+            // if none of the second neighbors have the selected color, then we are done
+            let neighborColors = get2ndNeighborColors(gameboard: gameboard, x: x, y: y)
+            if neighborColors[color, default: 0] == 0 {
+                slotFound = true
+            }
+            
+            // otherwise, if neighors cover all colors, then try the next position
+            else if neighborColors[.Red, default: 0] > 0 && neighborColors[.Yellow, default: 0] > 0 && neighborColors[.Blue, default: 0] > 0 {
+                x += 1
+            }
+            
+            // otherwise, shift the color
+            else {
+                color = shiftColor(color: color, secondNeighborColors: neighborColors)
+                slotFound = true
+            }
+        } while !slotFound
+        
+        // we found a spot
+        gameboard.setVirus(x: x, y: y, color: color)
+        return virusCount - 1
+    }
 }

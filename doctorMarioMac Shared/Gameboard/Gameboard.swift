@@ -7,6 +7,8 @@
 
 import SpriteKit
 
+/// Enum to describe a connection between the current cell and an adjacent one.
+/// This is used to keep a 2-part pill as one object.
 public enum Linkage {
     case None
     case Left
@@ -15,32 +17,112 @@ public enum Linkage {
     case Down
 }
 
+/// A cell represents a single grid space within the pill bottle. A cell can contain a pill,
+/// a virus, or nothing at all.
 public protocol ICell {
+    /// Color of the cell
     var color: Color {get}
+    /// Whether cell contains a virus or not
     var isVirus: Bool {get}
+    /// If the contents of the cell link to an adjacent cell
     var link: Linkage {get}
+    /// Whether the cell is marked for destruction or not
     var markedForDestruction: Bool {get}
 }
 
+/// A gameboard represents the grid of cells within a pill bottle.
 public protocol IGameboard : SKNode {
+    /// Number of cells across
     var gridWidth: Int {get}
+    /// Number of cells down
     var gridHeight: Int {get}
-    var cellWidth: CGFloat {get}
-    var cellHeight: CGFloat {get}
     
+    /// Returns true if the given coordinates are within the bounds of the gameboard.
+    /// - Parameters:
+    ///   - x: x cell position (0 based)
+    ///   - y: y cell position (0 based)
+    /// - Returns: true if within bounds; false if not.
     func isInBounds(x: Int, y: Int) -> Bool
     
+    /// Returns true if the cell in the given coordinates is empty.
+    /// - Parameters:
+    ///   - x: x cell position (0 based)
+    ///   - y: y cell position (0 based)
+    /// - Returns: true if the cell at the given coordinates is empty; false if not.
+    func isEmpty(x: Int, y: Int) -> Bool
+    
+    /// Empties all cells in the gameboard.
+    /// - Returns: Void
     func clear() -> Void
+    
+    /// Sets the cell at the given coordates as empty. Does nothing if the coordinates are
+    /// out of bounds.
+    /// - Parameters:
+    ///   - x: x cell position (0 based)
+    ///   - y: y cell position (0 based)
+    /// - Returns: Void
     func setEmpty(x: Int, y: Int) -> Void
+    
+    /// Sets the cell at the given coordates as a virus with the given color.
+    /// - Parameters:
+    ///   - x: x cell position (0 based)
+    ///   - y: y cell position (0 based)
+    ///   - color: color of virus to set
+    /// - Returns: Void
     func setVirus(x: Int, y: Int, color: Color) -> Void
+    
+    /// Sets a singular pill at the given coordinates with the given color.
+    /// - Parameters:
+    ///   - x: x cell position (0 based)
+    ///   - y: y cell position (0 based)
+    ///   - color: color of the singular pill to set
+    /// - Returns: Void
     func setSinglePill(x: Int, y: Int, color: Color) -> Void
+    
+    /// Sets a double pill at the given coordinates as well as at an adjacent cell
+    /// with the given set of colors.
+    ///
+    /// The start x and y coordinates will always be the top-left half of the double pill.
+    /// This half will have the first given color.
+    ///
+    /// The second half will occupy the cell below (if vertical is true), or to the right
+    /// (if vertical is false) and will be the given second color.
+    ///
+    /// If both halves are out of bounds, then this does nothing. If one half is out of bounds
+    /// and the other is not, then that half that is in bounds will be set as a singular pill.
+    /// - Parameters:
+    ///   - startX: x cell position (0 based) of top-left half of pill
+    ///   - startY: y cell position (0 based) of top-left half of pill
+    ///   - vertical: if true, second half of pill will occupy cell below;
+    ///   otherwise will occupy cell to the right
+    ///   - color1: color for first half of pill
+    ///   - color2: color for second half of pill
+    /// - Returns: Void
     func setDoublePill(startX: Int, startY: Int, vertical: Bool, color1: Color, color2: Color) -> Void
+    
+    /// Marks the cell at the given coordinates for destruction animation before being emptied.
+    /// - Parameters:
+    ///   - x: x cell position (0 based)
+    ///   - y: y cell position (0 based)
+    /// - Returns: Void
     func markForDestruction(x: Int, y: Int) -> Void
+    
+    /// Clears out all cells marked for destruction.
+    /// Meant to be called after destruction animation plays.
+    /// - Returns: Void
     func removeDestructionCells() -> Void
     
+    /// Returns the cell information at the given coordinates.
+    /// - Parameters:
+    ///   - x: x cell position (0 based)
+    ///   - y: y cell position (0 based)
+    /// - Returns: Cell info
     func getCellInfo(x: Int, y: Int) -> ICell
     
-    func Update(frameTime t: CGFloat) -> Void
+    /// Game update on all cell animations.
+    /// - Parameter t: time in seconds
+    /// - Returns: Void
+    func update(_ dt: CGFloat) -> Void
 }
 
 fileprivate struct Cell : ICell {
@@ -54,8 +136,6 @@ fileprivate struct Cell : ICell {
 fileprivate class Gameboard : SKNode, IGameboard {
     private let m_gridWidth: Int
     private let m_gridHeight: Int
-    private let m_cellWidth: CGFloat
-    private let m_cellHeight: CGFloat
     private var m_cells: [[Cell]]
     
     private var m_virusTextures: Dictionary<Color, [SKTexture]>
@@ -68,28 +148,24 @@ fileprivate class Gameboard : SKNode, IGameboard {
     
     // MARK: Initialization
     
-    enum InitMethod {
+    private enum InitMethod {
         case coder(NSCoder)
         case regular(Int)
     }
     
-    convenience init?(gridWidth: Int, gridHeight: Int, cellWidth: CGFloat, cellHeight: CGFloat) {
-        self.init(gridWidth, gridHeight, cellWidth, cellHeight, .regular(0))
+    convenience init?(gridWidth: Int, gridHeight: Int) {
+        self.init(gridWidth, gridHeight, .regular(0))
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let gridWidth = aDecoder.decodeInteger(forKey: "gridWidth")
         let gridHeight = aDecoder.decodeInteger(forKey: "gridHeight")
-        let cellWidth = CGFloat(aDecoder.decodeFloat(forKey: "cellWidth"))
-        let cellHeight = CGFloat(aDecoder.decodeFloat(forKey: "cellHeight"))
-        self.init(gridWidth, gridHeight, cellWidth, cellHeight, .coder(aDecoder))
+        self.init(gridWidth, gridHeight, .coder(aDecoder))
     }
     
-    private init?(_ gridWidth: Int, _ gridHeight: Int, _ cellWidth: CGFloat, _ cellHeight: CGFloat, _ initMethod: InitMethod) {
+    private init?(_ gridWidth: Int, _ gridHeight: Int, _ initMethod: InitMethod) {
         m_gridWidth = gridWidth
         m_gridHeight = gridHeight
-        m_cellWidth = cellWidth
-        m_cellHeight = cellHeight
         m_cells = Array.init(repeating: Array.init(repeating: Cell(), count: m_gridWidth), count: m_gridHeight)
         
         // Build virus textures
@@ -107,10 +183,10 @@ fileprivate class Gameboard : SKNode, IGameboard {
         
         // attach all nodes to gameboard node
         actOnAllCells({(x: Int, y: Int, _ cell: inout Cell) -> Void in
-            cell.node = SKSpriteNode(texture: nil, color: .black, size: CGSize(width: m_cellWidth, height: m_cellHeight))
+            cell.node = SKSpriteNode(texture: nil, color: .black, size: CGSize(width: 1, height: 1))
             cell.node!.isHidden = true
             cell.node!.anchorPoint = CGPoint(x: 0, y: 1)
-            cell.node!.position = CGPoint(x: CGFloat(x) * m_cellWidth, y: -CGFloat(y) * m_cellHeight)
+            cell.node!.position = CGPoint(x: CGFloat(x), y: -CGFloat(y))
             self.addChild(cell.node!)
         })
     }
@@ -154,11 +230,17 @@ fileprivate class Gameboard : SKNode, IGameboard {
     // MARK: Getters
     var gridWidth: Int {get {return m_gridWidth}}
     var gridHeight: Int {get {return m_gridHeight}}
-    var cellWidth: CGFloat {get {return m_cellWidth}}
-    var cellHeight: CGFloat {get {return m_cellHeight}}
     
     func isInBounds(x: Int, y: Int) -> Bool {
         return x >= 0 && y >= 0 && x < m_gridWidth && y < m_gridHeight
+    }
+    
+    func isEmpty(x: Int, y: Int) -> Bool {
+        guard isInBounds(x: x, y: y) else {
+            return false
+        }
+        let cell = getCellInfo(x: x, y: y)
+        return cell.color == .None
     }
     
     // MARK: Setting Cells
@@ -255,8 +337,8 @@ fileprivate class Gameboard : SKNode, IGameboard {
         return m_cells[y][x]
     }
     
-    func Update(frameTime t: CGFloat) -> Void {
-        m_timeElapsed += t
+    func update(_ dt: CGFloat) -> Void {
+        m_timeElapsed += dt
         if m_timeElapsed > m_virusInterval {
             m_timeElapsed = m_timeElapsed.truncatingRemainder(dividingBy: m_virusInterval)
             m_virusFrame = (m_virusFrame + 1) % 2
@@ -516,7 +598,11 @@ fileprivate class Gameboard : SKNode, IGameboard {
      */
 }
 
-public func createGameboard(gridWidth: Int, gridHeight: Int, cellWidth: CGFloat, cellHeight: CGFloat) -> IGameboard {
-    return Gameboard(gridWidth: gridWidth, gridHeight: gridHeight, cellWidth: cellWidth, cellHeight: cellHeight)!
+/// Factory method for creating a gameboard with the given dimensions.
+/// - Parameters:
+///   - gridWidth: number of cells across
+///   - gridHeight: number of cells down
+/// - Returns: newly created empty gameboard
+public func createGameboard(gridWidth: Int, gridHeight: Int) -> IGameboard {
+    return Gameboard(gridWidth: gridWidth, gridHeight: gridHeight)!
 }
-

@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830009772789A244009636BB /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009762789A244009636BB /* GameModel.swift */; };
+		830009782789A244009636BB /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009762789A244009636BB /* GameModel.swift */; };
+		830009792789A244009636BB /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009762789A244009636BB /* GameModel.swift */; };
+		8300097D2789A4FC009636BB /* StatePopulateViruses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300097C2789A4FC009636BB /* StatePopulateViruses.swift */; };
+		8300097E2789A4FC009636BB /* StatePopulateViruses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300097C2789A4FC009636BB /* StatePopulateViruses.swift */; };
+		8300097F2789A4FC009636BB /* StatePopulateViruses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300097C2789A4FC009636BB /* StatePopulateViruses.swift */; };
+		830009812789AA43009636BB /* GameStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009802789AA43009636BB /* GameStateMachine.swift */; };
+		830009822789AA43009636BB /* GameStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009802789AA43009636BB /* GameStateMachine.swift */; };
+		830009832789AA43009636BB /* GameStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009802789AA43009636BB /* GameStateMachine.swift */; };
+		830009862789AC6C009636BB /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009852789AC6C009636BB /* Queue.swift */; };
+		830009872789AC6C009636BB /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009852789AC6C009636BB /* Queue.swift */; };
+		830009882789AC6C009636BB /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830009852789AC6C009636BB /* Queue.swift */; };
 		833E46CA277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
 		833E46CB277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
 		833E46CC277547FC00DB3CC7 /* SpriteSheet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */; };
@@ -57,9 +69,19 @@
 		836661C9277532C300AB5900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83666190277532C300AB5900 /* Assets.xcassets */; };
 		836661CA277532C300AB5900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83666190277532C300AB5900 /* Assets.xcassets */; };
 		836661CB277532C300AB5900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83666190277532C300AB5900 /* Assets.xcassets */; };
+		83A364B12931FAD900851544 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A364B02931FAD900851544 /* BaseScene.swift */; };
+		83A364B22931FAD900851544 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A364B02931FAD900851544 /* BaseScene.swift */; };
+		83A364B32931FAD900851544 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A364B02931FAD900851544 /* BaseScene.swift */; };
+		83A364B52933648800851544 /* TileBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A364B42933648800851544 /* TileBackground.swift */; };
+		83A364B62933648800851544 /* TileBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A364B42933648800851544 /* TileBackground.swift */; };
+		83A364B72933648800851544 /* TileBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A364B42933648800851544 /* TileBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		830009762789A244009636BB /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		8300097C2789A4FC009636BB /* StatePopulateViruses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePopulateViruses.swift; sourceTree = "<group>"; };
+		830009802789AA43009636BB /* GameStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateMachine.swift; sourceTree = "<group>"; };
+		830009852789AC6C009636BB /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SpriteSheet.atlas; sourceTree = "<group>"; };
 		833E46D127755CE500DB3CC7 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		833E46E2277837DB00DB3CC7 /* VisitTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitTable.swift; sourceTree = "<group>"; };
@@ -87,6 +109,8 @@
 		836661BA277532C300AB5900 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		836661BD277532C300AB5900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		836661BF277532C300AB5900 /* doctorMarioMac_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = doctorMarioMac_macOS.entitlements; sourceTree = "<group>"; };
+		83A364B02931FAD900851544 /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
+		83A364B42933648800851544 /* TileBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +141,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8300097B2789A4A8009636BB /* GameStates */ = {
+			isa = PBXGroup;
+			children = (
+				8300097C2789A4FC009636BB /* StatePopulateViruses.swift */,
+			);
+			path = GameStates;
+			sourceTree = "<group>";
+		};
+		830009842789AC5E009636BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				830009852789AC6C009636BB /* Queue.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		833E46DC2777DF0A00DB3CC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				833E46F72779677F00DB3CC7 /* Bottle.swift */,
+				83A364B42933648800851544 /* TileBackground.swift */,
 			);
 			path = VisualContainers;
 			sourceTree = "<group>";
@@ -157,16 +198,19 @@
 		8366618C277532C200AB5900 /* doctorMarioMac Shared */ = {
 			isa = PBXGroup;
 			children = (
+				83A364AF2931CB3500851544 /* Scenes */,
+				830009842789AC5E009636BB /* Utils */,
+				8300097B2789A4A8009636BB /* GameStates */,
 				833E46F62779673D00DB3CC7 /* VisualContainers */,
 				833E46E12778379B00DB3CC7 /* Gameboard */,
 				833E46C9277547FC00DB3CC7 /* SpriteSheet.atlas */,
 				8366618D277532C200AB5900 /* Actions.sks */,
-				8366618E277532C200AB5900 /* GameScene.sks */,
-				8366618F277532C200AB5900 /* GameScene.swift */,
 				83666190277532C300AB5900 /* Assets.xcassets */,
 				833E46D127755CE500DB3CC7 /* Pill.swift */,
 				833E46EA277838DE00DB3CC7 /* Misc.swift */,
 				833E46EE277842E600DB3CC7 /* TextureCache.swift */,
+				830009762789A244009636BB /* GameModel.swift */,
+				830009802789AA43009636BB /* GameStateMachine.swift */,
 			);
 			path = "doctorMarioMac Shared";
 			sourceTree = "<group>";
@@ -212,6 +256,16 @@
 				836661BF277532C300AB5900 /* doctorMarioMac_macOS.entitlements */,
 			);
 			path = "doctorMarioMac macOS";
+			sourceTree = "<group>";
+		};
+		83A364AF2931CB3500851544 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				8366618E277532C200AB5900 /* GameScene.sks */,
+				8366618F277532C200AB5900 /* GameScene.swift */,
+				83A364B02931FAD900851544 /* BaseScene.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +339,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					83666194277532C300AB5900 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -368,15 +422,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				833E46E72778382900DB3CC7 /* Gameboard.swift in Sources */,
+				830009862789AC6C009636BB /* Queue.swift in Sources */,
 				833E46EB277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C6277532C300AB5900 /* GameScene.swift in Sources */,
+				83A364B12931FAD900851544 /* BaseScene.swift in Sources */,
 				833E46F82779677F00DB3CC7 /* Bottle.swift in Sources */,
 				8366619B277532C300AB5900 /* GameViewController.swift in Sources */,
+				8300097D2789A4FC009636BB /* StatePopulateViruses.swift in Sources */,
 				833E46D227755CE500DB3CC7 /* Pill.swift in Sources */,
 				833E46F32779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
 				833E46E3277837DB00DB3CC7 /* VisitTable.swift in Sources */,
 				833E46EF277842E600DB3CC7 /* TextureCache.swift in Sources */,
 				83666199277532C300AB5900 /* AppDelegate.swift in Sources */,
+				83A364B52933648800851544 /* TileBackground.swift in Sources */,
+				830009772789A244009636BB /* GameModel.swift in Sources */,
+				830009812789AA43009636BB /* GameStateMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,15 +445,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				833E46E82778382900DB3CC7 /* Gameboard.swift in Sources */,
+				830009872789AC6C009636BB /* Queue.swift in Sources */,
 				833E46EC277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C7277532C300AB5900 /* GameScene.swift in Sources */,
+				83A364B22931FAD900851544 /* BaseScene.swift in Sources */,
 				833E46F92779677F00DB3CC7 /* Bottle.swift in Sources */,
 				836661AB277532C300AB5900 /* GameViewController.swift in Sources */,
+				8300097E2789A4FC009636BB /* StatePopulateViruses.swift in Sources */,
 				833E46D327755CE500DB3CC7 /* Pill.swift in Sources */,
 				833E46F42779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
 				833E46E4277837DB00DB3CC7 /* VisitTable.swift in Sources */,
 				833E46F0277842E600DB3CC7 /* TextureCache.swift in Sources */,
 				836661A9277532C300AB5900 /* AppDelegate.swift in Sources */,
+				83A364B62933648800851544 /* TileBackground.swift in Sources */,
+				830009782789A244009636BB /* GameModel.swift in Sources */,
+				830009822789AA43009636BB /* GameStateMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,15 +468,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				833E46E92778382900DB3CC7 /* Gameboard.swift in Sources */,
+				830009882789AC6C009636BB /* Queue.swift in Sources */,
 				833E46ED277838DE00DB3CC7 /* Misc.swift in Sources */,
 				836661C8277532C300AB5900 /* GameScene.swift in Sources */,
+				83A364B32931FAD900851544 /* BaseScene.swift in Sources */,
 				833E46FA2779677F00DB3CC7 /* Bottle.swift in Sources */,
 				836661BB277532C300AB5900 /* GameViewController.swift in Sources */,
+				8300097F2789A4FC009636BB /* StatePopulateViruses.swift in Sources */,
 				833E46D427755CE500DB3CC7 /* Pill.swift in Sources */,
 				833E46F52779050F00DB3CC7 /* VirusPropagator.swift in Sources */,
 				833E46E5277837DB00DB3CC7 /* VisitTable.swift in Sources */,
 				833E46F1277842E700DB3CC7 /* TextureCache.swift in Sources */,
 				836661B9277532C300AB5900 /* AppDelegate.swift in Sources */,
+				83A364B72933648800851544 /* TileBackground.swift in Sources */,
+				830009792789A244009636BB /* GameModel.swift in Sources */,
+				830009832789AA43009636BB /* GameStateMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +566,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -553,6 +626,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -693,9 +767,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "doctorMarioMac macOS/doctorMarioMac_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = FJBQZME6ZC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -722,9 +798,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "doctorMarioMac macOS/doctorMarioMac_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = FJBQZME6ZC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;

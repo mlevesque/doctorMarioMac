@@ -19,3 +19,11 @@ public func getTexture(_ name: String) -> SKTexture {
     g_textures[name] = tex
     return tex
 }
+
+public func getSinglePillTexture(color: Color) -> SKTexture {
+    return getTexture("pill_\(color.description)_s")
+}
+
+public func getDoublePillTexture(color: Color, vertical: Bool, firstPart: Bool) -> SKTexture {
+    return getTexture("pill_\(color.description)_\(vertical ? "v" : "h")\(firstPart ? "1" : "2")")
+}
