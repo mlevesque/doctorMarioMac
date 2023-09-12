@@ -22,7 +22,7 @@ class GameScene : BaseScene {
     
     override public func onSetUpScene() {
         // BACKGROUND
-        let back = buildTileBackground(color1: getColorSet("LowTile"), color2: OSColor.black)
+        let back = buildTileBackground(color1: getColorSet("LowTile"), color2: OSColor.black, screenWidth: 50, screenHeight: 38)
         addChild(back)
         
         // GAMEBOARD
